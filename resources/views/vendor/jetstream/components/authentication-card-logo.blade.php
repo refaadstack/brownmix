@@ -1,6 +1,6 @@
 <a href="/">
     <img
-    src="{{ asset('frontend/images/content/logo.png') }}"
+    src="{{ asset('frontend/images/content/logo-daisee.jpg') }}"
     alt="Luxspace | Fulfill your house with beautiful furniture"
     />
 </a>
