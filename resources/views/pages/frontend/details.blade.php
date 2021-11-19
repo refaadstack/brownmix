@@ -103,7 +103,7 @@
         <div class="container mx-auto">
         <div class="flex flex-start mb-4">
             <h3 class="text-2xl capitalize font-semibold">
-            Complete your room <br class="" />with what we designed
+            Barang yang mungkin   <br class="" />Anda butuhkan
             </h3>
         </div>
         <div class="flex overflow-x-auto mb-4 -mx-3">

@@ -15,7 +15,7 @@
             class="fixed bg-white inset-0 flex flex-col invisible items-center justify-center opacity-0 md:visible md:flex-row md:bg-transparent md:relative md:opacity-100 md:flex md:items-center"
             id="menu"
           >
-            <li class="mx-3 py-6 md:py-0">
+            {{-- <li class="mx-3 py-6 md:py-0">
               <a href="#" class="text-black {{ \Route::current()->getName()=='index' ? 'md:text-white' : 'md:text-blade' }} hover:underline"
                 >Showcase</a
               >
@@ -34,7 +34,7 @@
               <a href="#" class="text-black {{ \Route::current()->getName()=='index' ? 'md:text-white' : 'md:text-blade' }} hover:underline"
                 >Rewards</a
               >
-            </li>
+            </li> --}}
             @auth
             <li class="mx-3 py-6 md:py-0">
               <a href="{{ route('dashboard.index') }}" class="text-black {{ \Route::current()->getName()=='index' ? 'md:text-white' : 'md:text-blade' }} hover:underline"

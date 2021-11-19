@@ -6,11 +6,11 @@
           class="w-full absolute z-20 inset-0 md:relative md:w-1/2 text-center flex flex-col justify-center hero-caption"
         >
           <h1 class="text-3xl md:text-5xl leading-tight font-semibold">
-            The Room <br class="" />You've Dreaming
+            Crafting <br class="" />with your love
           </h1>
           <h2 class="px-8 text-base md:px-0 md:text-lg my-6 tracking-wide">
-            Kami menyediakan furniture berkelas yang
-            <br class="hidden lg:block" />membuat ruangan terasa homey
+            Kami membuat karya dengan cinta untuk Anda
+            <br class="hidden lg:block" />
           </h2>
           <div>
             <a
@@ -51,7 +51,7 @@
       <!-- END: HERO -->
   
       <!-- START: BROWSE THE ROOM -->
-    <section class="flex bg-gray-100 py-16 px-4" id="browse-the-room">
+    {{-- <section class="flex bg-gray-100 py-16 px-4" id="browse-the-room">
         <div class="container mx-auto">
           <div class="flex flex-start mb-4">
             <h3 class="text-2xl capitalize font-semibold">
@@ -140,7 +140,7 @@
             </div>
           </div>
         </div>
-    </section>
+    </section> --}}
       <!-- END: BROWSE THE ROOM -->
   
       <!-- START: JUST ARRIVED -->
@@ -201,7 +201,7 @@
       <!-- END: JUST ARRIVED -->
   
       <!-- START: CLIENTS -->
-    <section class="container mx-auto">
+    {{-- <section class="container mx-auto">
         <div class="flex justify-center flex-wrap">
           <div
             class="w-full flex-auto md:w-auto md:flex-initial px-4 md:px-6 my-4 md:my-0"
@@ -228,6 +228,6 @@
             <img src="/frontend/images/content/logo-miele.svg" alt="" class="mx-auto" />
           </div>
         </div>
-    </section>
+    </section> --}}
     <!-- END: CLIENTS -->
 @endsection

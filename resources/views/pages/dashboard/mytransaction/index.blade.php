@@ -15,7 +15,6 @@
                     { data:'DT_RowIndex', name:'DT_RowIndex', width:'5%'},
                     { data:'name', name:'name'},
                     { data:'phone', name:'phone'},
-                    { data:'courier', name:'courier'},
                     { data:'total_price', name:'total_price'},
                     { data:'status', name:'status'},
                     {
@@ -40,7 +39,6 @@
                                 <td>ID</td>
                                 <td>Nama</td>
                                 <td>Phone</td>
-                                <td>Courier</td>
                                 <td>Total(Rp.)</td>
                                 <td>Status</td>
                                 <td>Aksi</td>
