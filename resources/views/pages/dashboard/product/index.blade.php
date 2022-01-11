@@ -55,4 +55,24 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function(){
+
+        $('#crudTable').editable({
+		container:'main',
+		selector:'td.stocks',
+		url:'',
+		title:'name',
+		type:'POST',
+		validate:function(value){
+			if($.trim(value) == '')
+			{
+				return 'This field is required';
+			}
+		}
+        });
+	});
+
+    </script>
 </x-app-layout>

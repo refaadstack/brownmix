@@ -58,14 +58,33 @@
         <div class="flex-1 px-4 md:p-6">
             <h2 class="text-5xl font-semibold">{{ $product->name }}</h2>
             <p class="text-xl">IDR {{ number_format($product->price) }}</p>
-            <p class="text-xl">{{ $product->category->name}}</p>
-            <p class="text-xl">Stocks: {{ number_format($product->stocks) }} Pcs</p>
 
+            @if ($product->stocks <= 0 && $product->category->name == 'Ready Stock')
+            <p class="text-xl text-red-600">Item sedang kosong, balik lagi besok ya!!!</p>    
+            @else
+            <p class="text-xl text-red-600">{{ $product->category->name}}</p>
+            @endif
+
+            @if ($product->stocks>0 && $product->category->name == 'Ready Stock')
+            <p class="text-xl">Stocks: {{ number_format($product->stocks) }} Pcs</p>
+                
+            @endif
+
+
+            
             <form action="{{ route('cart-add',$product->id) }}" method="POST">
                 @csrf
                 <button
                 type="submit"
-                class="transition-all duration-200 bg-pink-400 text-black focus:bg-black focus:text-pink-400 rounded-full px-8 py-3 mt-4 inline-flex">
+                class="transition-all duration-200 bg-pink-400 text-black focus:bg-black focus:text-pink-400 rounded-full px-8 py-3 mt-4 inline-flex" 
+                @if ($product->stocks <= 0 && $product->category->name === 'Ready Stock'){
+                    disabled 
+                }
+                    
+                @else
+                
+                @endif
+                >
                     <svg
                         class="fill-current mr-3"
                         width="26"
