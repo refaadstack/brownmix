@@ -14,7 +14,7 @@
           </h2>
           <div>
             <a
-              href="#browse-the-room"
+              href="#product"
               class="bg-pink-400 text-black hover:bg-black hover:text-pink-400 rounded-full px-8 py-3 mt-4 inline-block flex-none transition duration-200"
               >Explore Now</a
             >
@@ -24,7 +24,7 @@
           <div class="relative hero-image">
             <div class="overlay inset-0 bg-black opacity-35 z-10"></div>
             <div class="overlay right-0 bottom-0 md:inset-0">
-              <button
+              {{-- <button
                 class="video hero-cta focus:outline-none z-30 modal-trigger"
                 data-content='<div class="w-screen pb-56 md:w-88 md:pb-56 relative z-50">
                 <div class="absolute w-full h-full">
@@ -38,12 +38,12 @@
                   ></iframe>
                 </div>
               </div>'
-              ></button>
+              ></button> --}}
             </div>
             <img
-              src="/frontend/images/content/image-section-1.png"
+              src="/frontend/images/content/image-section-2.jpg"
               alt="hero 1"
-              class="absolute inset-0 md:relative w-full h-full object-cover object-center"
+              class="absolute inset-0 md:relative w-full"
             />
           </div>
         </div>
@@ -144,7 +144,7 @@
       <!-- END: BROWSE THE ROOM -->
   
       <!-- START: JUST ARRIVED -->
-    <section class="flex flex-col py-16">
+    <section id="product" class="flex flex-col py-16">
         <div class="container mx-auto mb-4">
           <div class="flex justify-center text-center mb-4">
             <h3 class="text-2xl capitalize font-semibold">

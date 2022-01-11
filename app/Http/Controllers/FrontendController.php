@@ -27,10 +27,21 @@ class FrontendController extends Controller
         return view('pages.frontend.details', compact('product','recomendations'));
     }
     public function cartAdd(Request $request, $id){
-        Cart::create([
-            'users_id' => Auth::user()->id,
-            'products_id' => $id,
-        ]);
+        
+
+        $cart = Cart::where('products_id',$id)->where('users_id',Auth::user()->id);
+
+        if($cart->count()){
+           $cart->increment('quantity');
+           $cart = $cart->first();
+        }else{
+        $data = [
+                    'products_id' => $id,
+                    'users_id' => Auth::user()->id,
+                    'quantity' => 1,
+                ];
+            Cart::create($data);
+        }
         return redirect('cart');
     }
     public function cartDelete(Request $request, $id){
@@ -42,6 +53,7 @@ class FrontendController extends Controller
     }
     public function cart(Request $request){
         $carts = Cart::with(['product.galleries'])->where('users_id', Auth::user()->id)->get();
+        // dd($carts);
         return view('pages.frontend.cart', compact(['carts']));
     }
     public function checkout(CheckoutRequest $request){
@@ -52,6 +64,7 @@ class FrontendController extends Controller
         //add to transaction data
             $data['users_id'] = Auth::user()->id;
             $data['total_price'] = $carts->sum('product.price');
+
             
         //create transaction
             $transaction = Transaction::create($data);  
@@ -63,9 +76,14 @@ class FrontendController extends Controller
                     'users_id'          => $cart->users_id,
                     'products_id'       => $cart->products_id 
                 ]);
+                $product = Product::findOrFail($cart->product->id);
+                $product->decrement('stocks', $cart->quantity);
             }
         //delete cart after transaction
             Cart::where('users_id',Auth::user()->id)->delete();
+            
+
+
         //konfigurasi midtrans
             Config::$serverKey      = config('services.midtrans.serverKey');
             Config::$isProduction   = config('services.midtrans.isProduction');

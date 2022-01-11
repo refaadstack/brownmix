@@ -43,6 +43,11 @@
                       <h6>Price</h6>
                     </div>
                   </div>
+                  <div class="px-4 w-5/12">
+                    <div class="">
+                      <h6>Quantity</h6>
+                    </div>
+                  </div>
                   <div class="px-4 w-2/12">
                     <div class="text-center">
                       <h6>Action</h6>
@@ -69,7 +74,7 @@
                         <h6 class="font-semibold text-lg md:text-xl leading-8">
                           {{ $cart->product->name }}
                         </h6>
-                        <span class="text-sm md:text-lg">test</span>
+                        <span class="text-sm md:text-lg"></span>
                         <h6
                           class="font-semibold text-base md:text-lg block md:hidden"
                         >
@@ -82,6 +87,13 @@
                     >
                       <div class="">
                         <h6 class="font-semibold text-lg">IDR {{ number_format($cart->product->price) }}</h6>
+                      </div>
+                    </div>
+                    <div
+                      class="px-4 w-auto flex-none md:flex-1 md:w-5/12 hidden md:block"
+                    >
+                      <div class="">
+                        <h6 class="font-semibold text-lg">{{ $cart->quantity }}</h6>
                       </div>
                     </div>
                     <div class="px-4 w-2/12">

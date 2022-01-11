@@ -15,6 +15,7 @@
                     { data:'DT_RowIndex', name:'DT_RowIndex', width:'5%'},
                     { data:'name', name:'name'},
                     { data:'price', name:'price'},
+                    { data:'stocks', name:'stocks'},
                     {
                         data:'action',
                         name:'action',
@@ -42,6 +43,7 @@
                                 <td>ID</td>
                                 <td>Nama</td>
                                 <td>Harga(Rp.)</td>
+                                <td>Stocks</td>
                                 <td>Aksi</td>
                             </tr>
                         </thead>

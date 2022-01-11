@@ -60,7 +60,8 @@ Route::middleware(['auth:sanctum', 'verified'])->name('dashboard.')->prefix('das
             'index',
             'edit',
             'update',
-            'destroy'
+            'destroy',
+            'show'
         ]);
     });
 });

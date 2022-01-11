@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         if(request()->ajax()){
-            $query = User::query();
+            $query = User::where('roles','USER');
 
             return DataTables::of($query)
             ->addIndexColumn()
@@ -25,6 +25,9 @@ class UserController extends Controller
                 return '
                     <a href="'. route('dashboard.user.edit', $item->id) .'" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 mr-2 md:my-4 rounded shadow-lg">
                         Edit
+                    </a>
+                    <a href="'. route('dashboard.user.show', $item->id) .'" class="bg-green-400 hover:bg-green-500 text-white font-bold py-1 px-3 mr-2 md:my-4 rounded shadow-lg">
+                        Detail
                     </a>
 
 
@@ -71,7 +74,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('pages.dashboard.user.show', compact('user'));
     }
 
     /**

@@ -14,10 +14,15 @@ class Product extends Model
         'name',
         'description',
         'price',
+        'category_id',
+        'stocks',
         'slug'
     ];
 
     public function galleries(){
         return $this->hasMany(ProductGallery::class, 'products_id','id');
+    }
+    public function category(){
+        return $this->hasOne(Category::class ,'id', 'category_id');
     }
 }

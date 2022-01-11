@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -56,7 +57,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('pages.dashboard.product.create');
+        $categories = Category::all();
+        return view('pages.dashboard.product.create',compact(['categories']));
     }
 
     /**
@@ -93,7 +95,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('pages.dashboard.product.edit', compact(['product']));
+        $categories = Category::all();
+        return view('pages.dashboard.product.edit', compact(['product','categories']));
     }
 
     /**
