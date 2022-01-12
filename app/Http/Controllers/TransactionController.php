@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TransactionRequest;
 use App\Models\Transaction;
 use App\Models\TransactionItem;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -18,7 +19,7 @@ class TransactionController extends Controller
     public function index()
     {
         if(request()->ajax()){
-            $query = Transaction::query();
+            $query = Transaction::orderBy('created_at','desc');
 
             return DataTables::of($query)
             ->addIndexColumn()
@@ -31,6 +32,9 @@ class TransactionController extends Controller
                         Edit
                     </a>     
                 ';
+            })
+            ->editColumn('created_at', function($item){
+                return ($item->created_at);
             })
             ->editColumn('total_price', function($item){
                 return number_format($item->total_price);

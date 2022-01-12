@@ -17,6 +17,8 @@
                     { data:'phone', name:'phone'},
                     { data:'total_price', name:'total_price'},
                     { data:'status', name:'status'},
+                    { data:'created_at', name:'created_at'},
+                    
                     {
                         data:'action',
                         name:'action',
@@ -41,6 +43,7 @@
                                 <td>Phone</td>
                                 <td>Total(Rp.)</td>
                                 <td>Status</td>
+                                <td>Waktu Transaksi</td>
                                 <td>Aksi</td>
                             </tr>
                         </thead>
