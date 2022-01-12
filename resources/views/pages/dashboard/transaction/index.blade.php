@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Transaction') }}
         </h2>
+
     </x-slot>
     <x-slot name="script">
         <script>
@@ -33,6 +34,11 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="mb-10">
+                <a href="{{ route('dashboard.export.laporan') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow-lg" target="_blank">
+                Cetak Laporan
+                </a>
+            </div>
             <div class="shadow overflow-hidden sm-rounded-md">
                 <div class="py-4 px-5 bg-white sm:p-6">
                     <table id="crudTable">

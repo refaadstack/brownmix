@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\MyTransactionController;
 use App\Http\Controllers\ProductController;
@@ -41,8 +42,9 @@ Route::middleware(['auth:sanctum', 'verified'])->name('dashboard.')->prefix('das
         'index',
         'show',
     ]);
-
+    
     Route::middleware(['admin'])->group(function(){
+        Route::get('/export/laporan', [ExportController::class, 'index'])->name('export.laporan');
         Route::resource('product', ProductController::class);
         Route::resource('product.gallery', ProductGalleryController::class)->shallow()->only([
             'index',
