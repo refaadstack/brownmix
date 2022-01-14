@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CheckoutRequest;
 use App\Models\Cart;
+use App\Models\City;
+use App\Models\Courier;
 use App\Models\Product;
+use App\Models\Province;
 use App\Models\Transaction;
 use App\Models\TransactionItem;
 use Exception;
@@ -52,10 +55,22 @@ class FrontendController extends Controller
         return redirect('cart');
     }
     public function cart(Request $request){
+
+        $couriers = Courier::pluck('title','code');
+        $provinces = Province::pluck('title','province_id');
+        // $city = City::pluck('city_id','title');
+
         $carts = Cart::with(['product.galleries'])->where('users_id', Auth::user()->id)->get();
         // dd($carts);
-        return view('pages.frontend.cart', compact(['carts']));
+        return view('pages.frontend.cart', compact(['carts','couriers','provinces']));
     }
+
+    public function getCities($id)
+    {
+        $city = City::where('province_id',$id)->pluck('title','city_id');
+        return response()->json($city);
+    }
+
     public function checkout(CheckoutRequest $request){
         $data = $request->all();
 

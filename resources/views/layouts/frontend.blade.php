@@ -21,6 +21,7 @@
     <meta name="theme-color" content="#000" />
     <link rel="icon" href="{{ asset('frontend/favicon.ico') }}">
     <link href="{{ asset('frontend/css/app.minify.css') }}" rel="stylesheet"></head>
+    
 
   <body>
     <!-- Add your site or application content here -->
@@ -41,6 +42,7 @@
     <!-- END: LOAD SVG  -->
 
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script>
       window.ga = function () {
         ga.q.push(arguments);
@@ -54,4 +56,6 @@
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async></script>
   <script src="{{ asset('frontend/js/app.js') }}"></script></body>
+  @stack('scripts')
+  
 </html>

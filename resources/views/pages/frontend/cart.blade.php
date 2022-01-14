@@ -117,7 +117,8 @@
                   <a href="{{ route('index') }}" class="underline">Shop Now</a>
                 </p>  
               @endforelse
-  
+
+              
               
             </div>
             <div class="w-full md:px-4 md:w-4/12" id="shipping-detail">
@@ -165,6 +166,29 @@
                         placeholder="Input your address"
                       />
                     </div>
+                    <div class="flex flex-col mb-1">
+                      <label for="province_destination" class="text-sm mb-2">Provinsi</label>
+                      <div class="flex -mx-2 flex-warp">
+                        <div class="px-2 w-6/12 h-24">
+                        <select class="border-gray-200 border rounded-lg px-2 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" name="province_destination" id="province_destination">
+                          <option value="" selected disabled>Pilih Provinsi</option>
+                          @foreach ($provinces as $province => $value)
+                          <option value="{{$province}}">{{ $value }}</option>                             
+                          @endforeach
+                        </select>
+                        </div>             
+                      </div>
+                    </div>
+                    <div class="flex flex-col mb-4">
+                      <label for="city_destination" class="text-sm mb-2">Kota</label>
+                      <div class="flex -mx-2 flex-warp">
+                        <div class="px-2 w-6/12 h-24 mb-2">
+                        <select class="border-gray-200 border rounded-lg px-2 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" name="city_destination" id="city_destination">
+                          <option value="">-- pilih kota tujuan --</option>
+                        </select>
+                        </div>             
+                      </div>
+                    </div>
     
                     <div class="flex flex-col mb-4">
                       <label for="phone-number" class="text-sm mb-2"
@@ -180,7 +204,7 @@
                       />
                     </div>
     
-                    {{-- <div class="flex flex-col mb-4">
+                    <div class="flex flex-col mb-4">
                       <label for="complete-name" class="text-sm mb-2"
                         >Choose Courier</label
                       >
@@ -188,33 +212,19 @@
                         <div class="px-2 w-6/12 h-24 mb-4">
                           <button
                             type="button"
-                            data-value="fedex"
+                            data-value="jne"
                             data-name="courier"
                             class="border border-gray-200 focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full focus:outline-none"
                           >
                             <img
-                              src="/frontend/images/content/logo-fedex.svg"
+                              src="/frontend/images/content/logo-jne.svg"
                               alt="Logo Fedex"
                               class="object-contain max-h-full"
                             />
                           </button>
                         </div>
-                        <div class="px-2 w-6/12 h-24 mb-4">
-                          <button
-                            type="button"
-                            data-value="dhl"
-                            data-name="courier"
-                            class="border border-gray-200 focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full focus:outline-none"
-                          >
-                            <img
-                              src="/frontend/images/content/logo-dhl.svg"
-                              alt="Logo dhl"
-                              class="object-contain max-h-full"
-                            />
-                          </button>
-                        </div>
                       </div>
-                    </div> --}}
+                    </div>
     
                     <div class="flex flex-col mb-4">
                       <label for="complete-name" class="text-sm mb-2"
@@ -290,6 +300,33 @@
             </div>
           </div>
         </div>
-      </section>
-      <!-- END: COMPLETE YOUR ROOM -->
-@endsection
+      </section>  
+        
+    @push('scripts')
+      
+      <script type="text/javascript">
+          $(document).ready(function(){     
+            $('select[name="province_destination"]').on('change', function () {
+              let provineId = $(this).val();
+              if (provineId) {
+                jQuery.ajax({
+                        url: '/cities/'+provineId,
+                        type: "GET",
+                        dataType: "json",
+                        success: function (response) {
+                          $('select[name="city_destination"]').empty();
+                          $('select[name="city_destination"]').append('<option value="">-- pilih kota tujuan --</option>');
+                            $.each(response, function (key, value) {
+                                $('select[name="city_destination"]').append('<option value="' +key+ '">' +value+ '</option>');
+                            });
+                        },
+                    });
+                  } else {
+                    $('select[name="city_destination"]').append('<option value="">-- pilih kota tujuan --</option>');
+                  }
+                });
+              });
+      </script>
+    @endpush
+        <!-- END: COMPLETE YOUR ROOM -->
+      @endsection

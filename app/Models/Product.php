@@ -16,7 +16,8 @@ class Product extends Model
         'price',
         'category_id',
         'stocks',
-        'slug'
+        'slug',
+        'weight'
     ];
 
     public function galleries(){
