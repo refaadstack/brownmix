@@ -32,6 +32,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     route::delete('/cart/{id}', [FrontendController::class, 'cartDelete'])->name('cart-delete');
     route::post('/checkout', [FrontendController::class, 'checkout'])->name('checkout');
     Route::get('/cities/{province_id}', [FrontendController::class,'getCities'])->name('city');
+    Route::post('/ongkir', [FrontendController::class,'ongkir']);
     route::get('/checkout/success', [FrontendController::class, 'success'])->name('checkout-success');
     
   

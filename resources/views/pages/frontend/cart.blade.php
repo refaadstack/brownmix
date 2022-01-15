@@ -55,7 +55,13 @@
                   </div>
                 </div>
               </div>
-              @forelse ($carts as $cart)
+              <?php
+              $totalBerat = 0;
+              $berat = 0;
+              $result = 0;
+              ?>
+              @foreach ($carts as $cart)
+
                   <!-- START: ROW 1 -->
                 <div
                   class="flex flex-start flex-wrap items-center mb-4 -mx-4"
@@ -110,13 +116,20 @@
                       </div>
                     </div>
                 </div>
+
+                <?php
+                    
+                    $totalBerat = $totalBerat + $cart->product->weight * $cart->quantity;
+                    $result = $totalBerat;
+                    
+                ?>
             <!-- END: ROW 1 -->
-              @empty    
+              {{-- @empty    
                 <p id="cart-empty" class="text-center py-8">
                   Ooops... Cart is empty
                   <a href="{{ route('index') }}" class="underline">Shop Now</a>
-                </p>  
-              @endforelse
+                </p>   --}}
+              @endforeach
 
               
               
@@ -166,30 +179,33 @@
                         placeholder="Input your address"
                       />
                     </div>
-                    <div class="flex flex-col mb-1">
+
+                    <div class="flex flex-col mb-4">
+                      <label for="weight" class="text-sm mb-2">Total Berat</label>
+                      <input
+                        data-input
+                        name="weight"
+                        type="text"
+                        id="weight"
+                        class="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
+                        disabled value="{{ $result }} gr"
+                      />
+                    </div>
+                    <div class="flex flex-col mb-4">
                       <label for="province_destination" class="text-sm mb-2">Provinsi</label>
-                      <div class="flex -mx-2 flex-warp">
-                        <div class="px-2 w-6/12 h-24">
                         <select class="border-gray-200 border rounded-lg px-2 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" name="province_destination" id="province_destination">
                           <option value="" selected disabled>Pilih Provinsi</option>
                           @foreach ($provinces as $province => $value)
                           <option value="{{$province}}">{{ $value }}</option>                             
                           @endforeach
                         </select>
-                        </div>             
-                      </div>
                     </div>
                     <div class="flex flex-col mb-4">
                       <label for="city_destination" class="text-sm mb-2">Kota</label>
-                      <div class="flex -mx-2 flex-warp">
-                        <div class="px-2 w-6/12 h-24 mb-2">
                         <select class="border-gray-200 border rounded-lg px-2 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" name="city_destination" id="city_destination">
                           <option value="">-- pilih kota tujuan --</option>
                         </select>
-                        </div>             
-                      </div>
-                    </div>
-    
+                    </div>    
                     <div class="flex flex-col mb-4">
                       <label for="phone-number" class="text-sm mb-2"
                         >Telepon</label
@@ -213,8 +229,8 @@
                           <button
                             type="button"
                             data-value="jne"
-                            data-name="courier"
-                            class="border border-gray-200 focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full focus:outline-none"
+                            name="courier"
+                            class="border border-gray-200 focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full focus:outline-none btn-courier"
                           >
                             <img
                               src="/frontend/images/content/logo-jne.svg"
@@ -225,7 +241,12 @@
                         </div>
                       </div>
                     </div>
-    
+                    <div class="flex flex-col mb-4">
+                      <label for="ongkir" class="text-sm mb-2">paket</label>
+                        <select class="border-gray-200 border rounded-lg px-2 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" name="on" id="ongkir">
+                          <option value="">-- pilih Paket --</option>
+                        </select>
+                    </div>
                     <div class="flex flex-col mb-4">
                       <label for="complete-name" class="text-sm mb-2"
                         >Pembayaran</label
@@ -294,6 +315,7 @@
                       >
                         Checkout Now
                       </button>
+                      
                     </div>
                 </form>
               </div>
@@ -325,8 +347,50 @@
                     $('select[name="city_destination"]').append('<option value="">-- pilih kota tujuan --</option>');
                   }
                 });
-              });
+                let isProcessing = false;
+                    $('.btn-courier').click(function (e) {
+                        e.preventDefault();
+
+                        let token            = $("meta[name='csrf-token']").attr("content");
+                        let city_origin      = 280;
+                        let city_destination = $('select[name=city_destination]').val();
+                        let courier          = $('button[name=courier]').val();
+                        let weight           = $('#weight').val();
+
+                        if(isProcessing){
+                            return;
+                        }
+
+                        isProcessing = true;
+                        jQuery.ajax({
+                            url: "/ongkir",
+                            data: {
+                                _token:              token,
+                                city_origin:         city_origin,
+                                city_destination:    city_destination,
+                                courier:             courier,
+                                weight:              weight,
+                            },
+                            dataType: "JSON",
+                            type: "POST",
+                            success: function (response) {
+                                isProcessing = false;
+                                if (response) {
+                                    $('#ongkir').empty();
+                                    $('.ongkir').addClass('d-block');
+                                    $.each(response[0]['costs'], function (key, value) {
+                                        $('#ongkir').append('<option >'+response[0].code.toUpperCase()+' : <strong>'+value.service+'</strong> - Rp. '+value.cost[0].value+' ('+value.cost[0].etd+' hari)</option>')
+                                    });
+
+                                }
+                            }
+                        });
+
+                     });
+            });
+
       </script>
+
     @endpush
         <!-- END: COMPLETE YOUR ROOM -->
       @endsection

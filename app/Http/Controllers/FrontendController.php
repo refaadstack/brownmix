@@ -13,6 +13,7 @@ use App\Models\TransactionItem;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Kavist\RajaOngkir\Facades\RajaOngkir;
 use Midtrans\Config;
 use Midtrans\Snap;
 
@@ -59,6 +60,9 @@ class FrontendController extends Controller
         $couriers = Courier::pluck('title','code');
         $provinces = Province::pluck('title','province_id');
         // $city = City::pluck('city_id','title');
+        // $carts = Cart::with(['product'])->where('users_id', Auth::user()->id)->get();
+        
+        // $totalberat = $carts->sum('product.weight');
 
         $carts = Cart::with(['product.galleries'])->where('users_id', Auth::user()->id)->get();
         // dd($carts);
@@ -69,6 +73,18 @@ class FrontendController extends Controller
     {
         $city = City::where('province_id',$id)->pluck('title','city_id');
         return response()->json($city);
+    }
+    public function ongkir(Request $request)
+    {
+        $cost = RajaOngkir::ongkosKirim([
+            'origin'        => $request->city_origin, // ID kota/kabupaten asal
+            'destination'   => $request->city_destination, // ID kota/kabupaten tujuan
+            'weight'        => $request->weight, // berat barang dalam gram
+            'courier'       => $request->courier // kode kurir pengiriman: ['jne', 'tiki', 'pos'] untuk starter
+        ])->get();
+
+
+        return response()->json($cost);
     }
 
     public function checkout(CheckoutRequest $request){
