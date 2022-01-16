@@ -125,7 +125,7 @@ class FrontendController extends Controller
             $midtrans = [
                 'transaction_details' =>[
                     'order_id'          => 'DC-' . $transaction->id,
-                    'gross_amount'      => (int) $transaction->total_price, 
+                    'gross_amount'      => (int) $transaction->total_price + $transaction->ongkir, 
                 ],
                 'customer_details' =>[
                     'first_name'    => $transaction->name,

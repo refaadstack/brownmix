@@ -12,7 +12,7 @@ class Cart extends Model
     protected $fillable = [
         'users_id',
         'products_id',
-        'quantity'
+        'quantity',
     ];
     public function product(){
         return $this->hasOne(Product::class,'id','products_id');

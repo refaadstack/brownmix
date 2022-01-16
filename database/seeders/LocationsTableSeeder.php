@@ -7,6 +7,7 @@ use App\Models\Province;
 use Illuminate\Database\Seeder;
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
+
 class LocationsTableSeeder extends Seeder
 {
     /**

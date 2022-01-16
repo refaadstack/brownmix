@@ -10,4 +10,11 @@ class City extends Model
     use HasFactory;
 
     protected $guarded =[];
+
+    public function province(){
+        return $this->belongsTo(Province::class, 'province_id','id');
+    }
+    public function transaction(){
+        return $this->hasMany(Category::class ,'city_destination', 'city_id');
+    }
 }

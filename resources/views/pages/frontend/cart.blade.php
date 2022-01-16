@@ -181,14 +181,14 @@
                     </div>
 
                     <div class="flex flex-col mb-4">
-                      <label for="weight" class="text-sm mb-2">Total Berat</label>
+                      <label for="weight" class="text-sm mb-2">Total Berat (Gr)</label>
                       <input
                         data-input
                         name="weight"
                         type="text"
                         id="weight"
                         class="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
-                        disabled value="{{ $result }} gr"
+                        disabled value="{{ $result }}"
                       />
                     </div>
                     <div class="flex flex-col mb-4">
@@ -229,7 +229,8 @@
                           <button
                             type="button"
                             data-value="jne"
-                            name="courier"
+                            value="jne"
+                            name="courier" id="courier"
                             class="border border-gray-200 focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full focus:outline-none btn-courier"
                           >
                             <img
@@ -242,8 +243,8 @@
                       </div>
                     </div>
                     <div class="flex flex-col mb-4">
-                      <label for="ongkir" class="text-sm mb-2">paket</label>
-                        <select class="border-gray-200 border rounded-lg px-2 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" name="on" id="ongkir">
+                      <label for="ongkir" class="text-sm mb-2">Jenis Paket</label>
+                        <select class="border-gray-200 border rounded-lg px-2 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" name="ongkir" id="ongkir">
                           <option value="">-- pilih Paket --</option>
                         </select>
                     </div>
@@ -354,14 +355,16 @@
                         let token            = $("meta[name='csrf-token']").attr("content");
                         let city_origin      = 280;
                         let city_destination = $('select[name=city_destination]').val();
-                        let courier          = $('button[name=courier]').val();
+                        let courier          = $('#courier').val();
                         let weight           = $('#weight').val();
+
 
                         if(isProcessing){
                             return;
                         }
 
                         isProcessing = true;
+                        // console.log()
                         jQuery.ajax({
                             url: "/ongkir",
                             data: {
@@ -372,14 +375,14 @@
                                 weight:              weight,
                             },
                             dataType: "JSON",
-                            type: "POST",
+                            method: "POST",
                             success: function (response) {
                                 isProcessing = false;
                                 if (response) {
                                     $('#ongkir').empty();
                                     $('.ongkir').addClass('d-block');
                                     $.each(response[0]['costs'], function (key, value) {
-                                        $('#ongkir').append('<option >'+response[0].code.toUpperCase()+' : <strong>'+value.service+'</strong> - Rp. '+value.cost[0].value+' ('+value.cost[0].etd+' hari)</option>')
+                                        $('#ongkir').append('<option value="'+value.cost[0].value+'" >'+response[0].code.toUpperCase()+' : <strong>'+value.service+'</strong> - Rp. '+value.cost[0].value+' ('+value.cost[0].etd+' hari)</option>')
                                     });
 
                                 }
@@ -393,4 +396,4 @@
 
     @endpush
         <!-- END: COMPLETE YOUR ROOM -->
-      @endsection
+    @endsection

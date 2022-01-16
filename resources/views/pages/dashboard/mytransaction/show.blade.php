@@ -38,7 +38,7 @@
                         </tr>
                         <tr>
                             <th class="border px-6 py-4 text-right">Address</th>
-                            <td class="border px-6 py-4">{{ $transaction->address }}</td>
+                            <td class="border px-6 py-4">{{ $transaction->address }}, Kota {{ $transaction->city->title }}, Provinsi {{ $transaction->province->title }}</td>
                         </tr>
                         <tr>
                             <th class="border px-6 py-4 text-right">Phone</th>
@@ -50,15 +50,27 @@
                         </tr>
                         <tr>
                             <th class="border px-6 py-4 text-right">Payment URL</th>
-                            <td class="border px-6 py-4">{{ $transaction->payment_url }}</td>
+                            <td class="border px-6 py-4"><a href="{{ $transaction->payment_url }}" class="text-blue-700">link pembayaran</a></td>
                         </tr>
                         <tr>
                             <th class="border px-6 py-4 text-right">Status</th>
                             <td class="border px-6 py-4">{{ $transaction->status }}</td>
                         </tr>
                         <tr>
-                            <th class="border px-6 py-4 text-right">Total</th>
-                            <td class="border px-6 py-4">{{ $transaction->total_price }}</td>
+                            <th class="border px-6 py-4 text-right">Total belanja</th>
+                            <td class="border px-6 py-4">Rp. {{ number_format($transaction->total_price) }}</td>
+                        </tr>
+                        <tr>
+                            <th class="border px-6 py-4 text-right">Ongkir</th>
+                            <td class="border px-6 py-4">Rp. {{ number_format($transaction->ongkir) }}</td>
+                        </tr>
+                        <tr>
+                            <th class="border px-6 py-4 text-right">Kurir</th>
+                            <td class="border px-6 py-4">{{ $transaction->courier }}</td>
+                        </tr>
+                        <tr>
+                            <th class="border px-6 py-4 text-right">Total pembayaran</th>
+                            <td class="border px-6 py-4">Rp. {{number_format($transaction->ongkir + $transaction->total_price) }}</td>
                         </tr>
                     </table>
                 </div>

@@ -17,6 +17,9 @@ class Transaction extends Model
         'address',
         'phone',
         'courier',
+        'province_destination',
+        'city_destination',
+        'ongkir',
         'payment',
         'payment_url',
         'total_price',
@@ -25,6 +28,12 @@ class Transaction extends Model
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id','id');
+    }
+    public function province(){
+        return $this->hasOne(Province::class,'id','province_destination');
+    }
+    public function city(){
+        return $this->hasOne(City::class,'city_id','city_destination');
     }
 
 }
