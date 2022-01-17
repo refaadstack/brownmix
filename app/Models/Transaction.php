@@ -20,6 +20,7 @@ class Transaction extends Model
         'province_destination',
         'city_destination',
         'ongkir',
+        'resi',
         'payment',
         'payment_url',
         'total_price',

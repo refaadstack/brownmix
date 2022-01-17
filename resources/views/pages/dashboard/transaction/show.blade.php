@@ -65,6 +65,10 @@
                             <td class="border px-6 py-4">Rp. {{ number_format($transaction->ongkir) }}</td>
                         </tr>
                         <tr>
+                            <th class="border px-6 py-4 text-right">Resi</th>
+                            <td class="border px-6 py-4">{{ $transaction->resi }}</td>
+                        </tr>
+                        <tr>
                             <th class="border px-6 py-4 text-right">Kurir</th>
                             <td class="border px-6 py-4">{{ $transaction->courier }}</td>
                         </tr>
