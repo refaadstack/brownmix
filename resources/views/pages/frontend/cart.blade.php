@@ -60,7 +60,7 @@
               $berat = 0;
               $result = 0;
               ?>
-              @foreach ($carts as $cart)
+              @forelse ($carts as $cart)
 
                   <!-- START: ROW 1 -->
                 <div
@@ -124,12 +124,12 @@
                     
                 ?>
             <!-- END: ROW 1 -->
-              {{-- @empty    
+              @empty    
                 <p id="cart-empty" class="text-center py-8">
                   Ooops... Cart is empty
                   <a href="{{ route('index') }}" class="underline">Shop Now</a>
-                </p>   --}}
-              @endforeach
+                </p>  
+              @endforelse
 
               
               

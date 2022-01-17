@@ -124,7 +124,7 @@ class FrontendController extends Controller
         //setup variable midtrans
             $midtrans = [
                 'transaction_details' =>[
-                    'order_id'          => 'DC-' . $transaction->id,
+                    'order_id'          => 'DC-' . $transaction->id . rand(1,99999).'-'.$transaction->ongkir,
                     'gross_amount'      => (int) $transaction->total_price + $transaction->ongkir, 
                 ],
                 'customer_details' =>[
