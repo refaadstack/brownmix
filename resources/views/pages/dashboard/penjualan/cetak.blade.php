@@ -15,6 +15,7 @@
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Alamat</th>
+                    <th>Ongkir</th>
                     <th>Total Price</th>
                 </tr>
             </thead>
@@ -27,15 +28,16 @@
                     <td class="text-dark">{{ $transaction->name }}</td>
                     <td class="text-dark">{{ $transaction->email }}</td>
                     <td class="text-dark">{{ $transaction->address }}</td>
-                    <td class="text-dark">Rp. {{ number_format($transaction->total_price,2) }}</td>
+                    <td class="text-dark">{{ number_format($transaction->ongkir) }}</td>
+                    <td class="text-dark">Rp. {{ number_format($transaction->total_price + $transaction->ongkir,2) }}</td>
                 </tr>    
                 <?php
-                $total = $total + $transaction->total_price;
+                $total = $total + $transaction->total_price+$transaction->ongkir;
                 $format = number_format($total,2);
                 ?>
                 @endforeach
                 <tr>
-                    <td colspan="3">
+                    <td colspan="4">
                         Total Pemasukan
                     </td>
                     <td>Rp.{{ $format }}</td>
