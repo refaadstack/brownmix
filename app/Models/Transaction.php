@@ -37,4 +37,8 @@ class Transaction extends Model
         return $this->hasOne(City::class,'city_id','city_destination');
     }
 
+    public function transactionItem(){
+        return $this->belongsTo(TransactionItem::class,'transacaction_id','id');
+    }
+
 }

@@ -12,8 +12,9 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Nama</th>
+                    <th>Nama (produk)</th>
                     <th>Email</th>
+                    <th>Kategori</th>
                     <th>Alamat</th>
                     <th>Ongkir</th>
                     <th>Total Price</th>
@@ -21,26 +22,49 @@
             </thead>
             <tbody>
                 <?php
-                $total = 0;
+                $totalOngkir = 0;
+                $totalPemasukan = 0;
                 ?>
                 @foreach ($transactions as $transaction)
                 <tr>
-                    <td class="text-dark">{{ $transaction->name }}</td>
+                    <td class="text-dark" style="width: 25%">
+                        <h6 class="card-title">{{ $transaction->namapenerima }}</h6>
+                        <small class="card-text">{{ $transaction->namaproduk }}</small>
+                    </td>
                     <td class="text-dark">{{ $transaction->email }}</td>
-                    <td class="text-dark">{{ $transaction->address }}</td>
+                    <td class="text-dark">{{ $transaction->catName }}</td>
+                    <td class="text-dark">{{ $transaction->address}}</td>
+
                     <td class="text-dark">{{ number_format($transaction->ongkir) }}</td>
-                    <td class="text-dark">Rp. {{ number_format($transaction->total_price + $transaction->ongkir,2) }}</td>
+                    <td class="text-dark">Rp. {{ number_format($transaction->price) }}</td>
                 </tr>    
                 <?php
-                $total = $total + $transaction->total_price+$transaction->ongkir;
-                $format = number_format($total,2);
+                $totalOngkir = $totalOngkir + $transaction->ongkir;
+                $totalPemasukan = $totalPemasukan + $transaction->price;
+                $jumlah = 0;
+                $jumlah = number_format($totalOngkir + $totalPemasukan,2);
+                $formatPemasukan = number_format($totalPemasukan,2);
+                $formatOngkir = number_format($totalOngkir,2);
+                
                 ?>
                 @endforeach
                 <tr>
-                    <td colspan="4">
+                    <td colspan="5">
+                        Total Ongkir
+                    </td>
+                    <td>Rp.{{ $formatOngkir }}</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
                         Total Pemasukan
                     </td>
-                    <td>Rp.{{ $format }}</td>
+                    <td>Rp.{{ $formatPemasukan }}</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        Jumlah
+                    </td>
+                    <td>Rp.{{ $jumlah }}</td>
                 </tr>
             </tbody>
         </table>

@@ -18,4 +18,7 @@ class TransactionItem extends Model
     public function product(){
         return $this->hasOne(Product::class,'id','products_id');
     }
+    public function transaction(){
+        return $this->hasMany(Transaction::class,'id','transaction_id');
+    }
 }
