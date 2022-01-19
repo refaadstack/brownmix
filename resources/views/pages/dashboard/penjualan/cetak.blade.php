@@ -35,7 +35,7 @@
                     <td class="text-dark">{{ $transaction->catName }}</td>
                     <td class="text-dark">{{ $transaction->address}}</td>
 
-                    <td class="text-dark">{{ number_format($transaction->ongkir) }}</td>
+                    <td class="text-dark">Rp. {{ number_format($transaction->ongkir) }}</td>
                     <td class="text-dark">Rp. {{ number_format($transaction->price) }}</td>
                 </tr>    
                 <?php
