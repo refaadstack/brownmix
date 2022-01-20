@@ -10,11 +10,11 @@
             Laporan Penjualan Daisee Crafting
         </h3>
         <p class="text-dark">Produk {{ $cat }}</p>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-sm">
             <thead>
                 <tr>
                     <th>Nama (produk)</th>
-                    <th>Email</th>
+                    <th style="width: 10%">Email</th>
                     <th>Kategori</th>
                     <th>Alamat</th>
                     <th>Ongkir</th>
