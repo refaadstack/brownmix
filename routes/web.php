@@ -46,7 +46,8 @@ Route::middleware(['auth:sanctum', 'verified'])->name('dashboard.')->prefix('das
     ]);
     
     Route::middleware(['admin'])->group(function(){
-        Route::get('/export/laporan', [ExportController::class, 'index'])->name('export.laporan');
+        Route::get('/export/laporan/ready', [ExportController::class, 'index'])->name('export.laporan.ready');
+        Route::get('/export/laporan/handmade', [ExportController::class, 'handmade'])->name('export.laporan.handmade');
         Route::resource('product', ProductController::class);
         Route::resource('product.gallery', ProductGalleryController::class)->shallow()->only([
             'index',

@@ -9,6 +9,7 @@
         <h3 class="text-center">
             Laporan Penjualan Daisee Crafting
         </h3>
+        <p class="text-dark">Produk {{ $cat }}</p>
         <table class="table table-bordered">
             <thead>
                 <tr>

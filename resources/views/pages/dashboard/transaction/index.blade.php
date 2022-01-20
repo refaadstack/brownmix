@@ -35,8 +35,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-10">
-                <a href="{{ route('dashboard.export.laporan') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow-lg" target="_blank">
-                Cetak Laporan
+                <a href="{{ route('dashboard.export.laporan.ready') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow-lg mx-2" target="_blank">
+                Cetak Laporan Ready-stock
+                </a>
+                <a href="{{ route('dashboard.export.laporan.handmade') }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded shadow-lg" target="_blank">
+                    Cetak Laporan Hand-made
                 </a>
             </div>
             <div class="shadow overflow-hidden sm-rounded-md">
