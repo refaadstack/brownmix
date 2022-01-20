@@ -35,7 +35,7 @@ class ExportController extends Controller
                         // dd($transactions);
 
 
-        $pdf = PDF::loadView('pages.dashboard.penjualan.cetak',['transactions' => $transactions]);
+        $pdf = PDF::loadview('pages.dashboard.penjualan.cetak',['transactions' => $transactions]);
      
         return $pdf->stream('Laporan_Penjualan.pdf');
     }
