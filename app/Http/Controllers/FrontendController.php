@@ -57,8 +57,7 @@ class FrontendController extends Controller
     }
     public function cart(Request $request){
 
-        $couriers = Courier::pluck('title','code');
-        $provinces = Province::pluck('title','province_id');
+       
         // $city = City::pluck('city_id','title');
         // $carts = Cart::with(['product'])->where('users_id', Auth::user()->id)->get();
         
@@ -66,7 +65,7 @@ class FrontendController extends Controller
 
         $carts = Cart::with(['product.galleries'])->where('users_id', Auth::user()->id)->get();
         // dd($carts);
-        return view('pages.frontend.cart', compact(['carts','couriers','provinces']));
+        return view('pages.frontend.cart', compact(['carts']));
     }
 
     public function getCities($id)
@@ -124,7 +123,7 @@ class FrontendController extends Controller
         //setup variable midtrans
             $midtrans = [
                 'transaction_details' =>[
-                    'order_id'          => 'DC-' . $transaction->id . rand(1,99999).'-'.$transaction->ongkir,
+                    'order_id'          => 'BM-' . $transaction->id . rand(1,99999).'-'.$transaction->ongkir,
                     'gross_amount'      => (int) $transaction->total_price + $transaction->ongkir, 
                 ],
                 'customer_details' =>[

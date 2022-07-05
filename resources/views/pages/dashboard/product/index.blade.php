@@ -16,7 +16,6 @@
                     { data:'name', name:'name'},
                     { data:'price', name:'price'},
                     { data:'stocks', name:'stocks'},
-                    { data:'weight', name:'weight'},
                     {
                         data:'action',
                         name:'action',
@@ -45,7 +44,6 @@
                                 <td>Nama</td>
                                 <td>Harga(Rp.)</td>
                                 <td>Stocks</td>
-                                <td>berat</td>
                                 <td>Aksi</td>
                             </tr>
                         </thead>

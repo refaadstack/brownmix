@@ -21,8 +21,6 @@ class CreateTransactionsTable extends Migration
             $table->text('address')->nullable();
             $table->string('phone')->nullable();
 
-            $table->string('courier')->default('jne');
-
             $table->string('payment')->default('MIDTRANS');
             $table->string('payment_url')->nullable();
 

@@ -152,7 +152,7 @@
                         type="text"
                         id="complete-name"
                         class="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
-                        placeholder="Input your name"
+                        placeholder="Input your name" value="{{ Auth::user()->name }}"
                       />
                     </div>
     
@@ -164,7 +164,7 @@
                         type="email"
                         id="email"
                         class="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
-                        placeholder="Input your email address"
+                        placeholder="Input your email address" value="{{ Auth::user()->email }}"
                       />
                     </div>
     
@@ -179,33 +179,6 @@
                         placeholder="Input your address"
                       />
                     </div>
-
-                    <div class="flex flex-col mb-4">
-                      <label for="weight" class="text-sm mb-2">Total Berat (Gr)</label>
-                      <input
-                        data-input
-                        name="weight"
-                        type="text"
-                        id="weight"
-                        class="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
-                        disabled value="{{ $result }}"
-                      />
-                    </div>
-                    <div class="flex flex-col mb-4">
-                      <label for="province_destination" class="text-sm mb-2">Provinsi</label>
-                        <select class="border-gray-200 border rounded-lg px-2 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" name="province_destination" id="province_destination">
-                          <option value="" selected disabled>Pilih Provinsi</option>
-                          @foreach ($provinces as $province => $value)
-                          <option value="{{$province}}">{{ $value }}</option>                             
-                          @endforeach
-                        </select>
-                    </div>
-                    <div class="flex flex-col mb-4">
-                      <label for="city_destination" class="text-sm mb-2">Kota</label>
-                        <select class="border-gray-200 border rounded-lg px-2 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" name="city_destination" id="city_destination">
-                          <option value="">-- pilih kota tujuan --</option>
-                        </select>
-                    </div>    
                     <div class="flex flex-col mb-4">
                       <label for="phone-number" class="text-sm mb-2"
                         >Telepon</label
@@ -219,33 +192,12 @@
                         placeholder="Input your phone number"
                       />
                     </div>
-    
-                    <div class="flex flex-col mb-4">
-                      <label for="complete-name" class="text-sm mb-2"
-                        >Choose Courier</label
-                      >
-                      <div class="flex -mx-2 flex-wrap">
-                        <div class="px-2 w-6/12 h-24 mb-4">
-                          <button
-                            type="button"
-                            data-value="jne"
-                            value="jne"
-                            name="courier" id="courier"
-                            class="border border-gray-200 focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full focus:outline-none btn-courier"
-                          >
-                            <img
-                              src="/frontend/images/content/logo-jne.svg"
-                              alt="Logo Fedex"
-                              class="object-contain max-h-full"
-                            />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
                     <div class="flex flex-col mb-4">
                       <label for="ongkir" class="text-sm mb-2">Jenis Paket</label>
                         <select class="border-gray-200 border rounded-lg px-2 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" name="ongkir" id="ongkir">
                           <option value="">-- pilih Paket --</option>
+                          <option value="10000">diantar</option>
+                          <option value="0">jemput sendiri</option>
                         </select>
                     </div>
                     <div class="flex flex-col mb-4">
@@ -267,46 +219,6 @@
                             />
                           </button>
                         </div>
-                        {{-- <div class="px-2 w-6/12 h-24 mb-4">
-                          <button
-                            type="button"
-                            data-value="mastercard"
-                            data-name="payment"
-                            class="border border-gray-200 focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full focus:outline-none"
-                          >
-                            <img
-                              src="/frontend/images/content/logo-mastercard.svg"
-                              alt="Logo mastercard"
-                            />
-                          </button>
-                        </div>
-                        <div class="px-2 w-6/12 h-24 mb-4">
-                          <button
-                            type="button"
-                            data-value="bitcoin"
-                            data-name="payment"
-                            class="border border-gray-200 focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full focus:outline-none"
-                          >
-                            <img
-                              src="/frontend/images/content/logo-bitcoin.svg"
-                              alt="Logo bitcoin"
-                              class="object-contain max-h-full"
-                            />
-                          </button>
-                        </div>
-                        <div class="px-2 w-6/12 h-24 mb-4">
-                          <button
-                            type="button"
-                            data-value="american-express"
-                            data-name="payment"
-                            class="border border-gray-200 focus:border-red-200 flex items-center justify-center rounded-xl bg-white w-full h-full focus:outline-none"
-                          >
-                            <img
-                              src="/frontend/images/content/logo-american-express.svg"
-                              alt="Logo american-logo-american-express"
-                            />
-                          </button>
-                        </div> --}}
                       </div>
                     </div>
                     <div class="text-center">
@@ -324,76 +236,5 @@
           </div>
         </div>
       </section>  
-        
-    @push('scripts')
-      
-      <script type="text/javascript">
-          $(document).ready(function(){     
-            $('select[name="province_destination"]').on('change', function () {
-              let provineId = $(this).val();
-              if (provineId) {
-                jQuery.ajax({
-                        url: '/cities/'+provineId,
-                        type: "GET",
-                        dataType: "json",
-                        success: function (response) {
-                          $('select[name="city_destination"]').empty();
-                          $('select[name="city_destination"]').append('<option value="">-- pilih kota tujuan --</option>');
-                            $.each(response, function (key, value) {
-                                $('select[name="city_destination"]').append('<option value="' +key+ '">' +value+ '</option>');
-                            });
-                        },
-                    });
-                  } else {
-                    $('select[name="city_destination"]').append('<option value="">-- pilih kota tujuan --</option>');
-                  }
-                });
-                let isProcessing = false;
-                    $('.btn-courier').click(function (e) {
-                        e.preventDefault();
-
-                        let token            = $("meta[name='csrf-token']").attr("content");
-                        let city_origin      = 280;
-                        let city_destination = $('select[name=city_destination]').val();
-                        let courier          = $('#courier').val();
-                        let weight           = $('#weight').val();
-
-
-                        if(isProcessing){
-                            return;
-                        }
-
-                        isProcessing = true;
-                        // console.log()
-                        jQuery.ajax({
-                            url: "/ongkir",
-                            data: {
-                                _token:              token,
-                                city_origin:         city_origin,
-                                city_destination:    city_destination,
-                                courier:             courier,
-                                weight:              weight,
-                            },
-                            dataType: "JSON",
-                            method: "POST",
-                            success: function (response) {
-                                isProcessing = false;
-                                if (response) {
-                                    $('#ongkir').empty();
-                                    $('.ongkir').addClass('d-block');
-                                    $.each(response[0]['costs'], function (key, value) {
-                                        $('#ongkir').append('<option value="'+value.cost[0].value+'" >'+response[0].code.toUpperCase()+' : <strong>'+value.service+'</strong> - Rp. '+value.cost[0].value+' ('+value.cost[0].etd+' hari)</option>')
-                                    });
-
-                                }
-                            }
-                        });
-
-                     });
-            });
-
-      </script>
-
-    @endpush
         <!-- END: COMPLETE YOUR ROOM -->
     @endsection

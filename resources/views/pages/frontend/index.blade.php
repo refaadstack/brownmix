@@ -6,17 +6,17 @@
           class="w-full absolute z-20 inset-0 md:relative md:w-1/2 text-center flex flex-col justify-center hero-caption"
         >
           <h1 class="text-3xl md:text-5xl leading-tight font-semibold">
-            Crafting <br class="" />with your love
+            Special menu <br class="" /> get your
           </h1>
           <h2 class="px-8 text-base md:px-0 md:text-lg my-6 tracking-wide">
-            Kami membuat karya dengan cinta untuk Anda
+            Sweet Cakes
             <br class="hidden lg:block" />
           </h2>
           <div>
             <a
               href="#product"
               class="bg-pink-400 text-black hover:bg-black hover:text-pink-400 rounded-full px-8 py-3 mt-4 inline-block flex-none transition duration-200"
-              >Explore Now</a
+              >Cari Kue</a
             >
           </div>
         </div>
@@ -148,7 +148,7 @@
         <div class="container mx-auto mb-4">
           <div class="flex justify-center text-center mb-4">
             <h3 class="text-2xl capitalize font-semibold">
-              Just Arrived <br class="" />this summer for you
+              Just Arrived <br class="" />this day for you
             </h3>
           </div>
         </div>

@@ -4,8 +4,8 @@
         <div class="w-56 items-center flex">
           <a href="{{ route('index') }}">
             <img
-            src="{{ asset('frontend/images/content/logo-daisee.png') }}"
-            alt="Daisee Crafting"
+            src="{{ asset('frontend/images/content/logo_app.png') }}"
+            alt="Brown Mix Factory logo"
             />
          </a>
         </div>

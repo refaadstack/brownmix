@@ -94,7 +94,7 @@
 <!-- START: FOOTER -->
 <footer class="flex text-center px-4 py-8 justify-center">
   <p class="text-sm">
-    Copyright 2021 • All Rights Reserved Daisee Crafting by Melsy Septiani Barlin
+    Copyright 2021 • All Rights Reserved Daisee Crafting by Brown Mix Factory
   </p>
 </footer>
 <!-- END: FOOTER -->

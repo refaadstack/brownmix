@@ -15,11 +15,14 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-          'name' => ('Ready Stock'),  
+          'name' => ('Fromage Cheesecake'),  
         ]);
 
         DB::table('categories')->insert([
-            'name' => ('Pre-Order'),  
+            'name' => ('Menu Box'),  
+          ]);
+        DB::table('categories')->insert([
+            'name' => ('Desert Bowl'),  
           ]);
     }
 }
