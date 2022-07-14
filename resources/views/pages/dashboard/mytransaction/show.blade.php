@@ -37,10 +37,6 @@
                             <td class="border px-6 py-4">{{ $transaction->email }}</td>
                         </tr>
                         <tr>
-                            <th class="border px-6 py-4 text-right">Address</th>
-                            <td class="border px-6 py-4">{{ $transaction->address }}, Kota {{ $transaction->city->title }}, Provinsi {{ $transaction->province->title }}</td>
-                        </tr>
-                        <tr>
                             <th class="border px-6 py-4 text-right">Phone</th>
                             <td class="border px-6 py-4">{{ $transaction->phone }}</td>
                         </tr>
@@ -63,14 +59,6 @@
                         <tr>
                             <th class="border px-6 py-4 text-right">Ongkir</th>
                             <td class="border px-6 py-4">Rp. {{ number_format($transaction->ongkir) }}</td>
-                        </tr>
-                        <tr>
-                            <th class="border px-6 py-4 text-right">Resi</th>
-                            <td class="border px-6 py-4">{{ $transaction->resi }}</td>
-                        </tr>
-                        <tr>
-                            <th class="border px-6 py-4 text-right">Kurir</th>
-                            <td class="border px-6 py-4">{{ $transaction->courier }}</td>
                         </tr>
                         <tr>
                             <th class="border px-6 py-4 text-right">Total pembayaran</th>

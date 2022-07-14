@@ -93,7 +93,14 @@ class FrontendController extends Controller
             $carts = Cart::with(['product'])->where('users_id', Auth::user()->id)->get();
         //add to transaction data
             $data['users_id'] = Auth::user()->id;
-            $data['total_price'] = $carts->sum('product.price');
+            $data['price'] = 0;
+            $data['total_price'] = 0;
+            foreach ($carts as $cart) {
+                $data['price'] += $cart->product->price * $cart->quantity;
+                $data['total_price'] = $data['total_price'] + $data['price'];
+            }
+
+
 
             
         //create transaction
@@ -124,7 +131,7 @@ class FrontendController extends Controller
             $midtrans = [
                 'transaction_details' =>[
                     'order_id'          => 'BM-' . $transaction->id . rand(1,99999).'-'.$transaction->ongkir,
-                    'gross_amount'      => (int) $transaction->total_price + $transaction->ongkir, 
+                    'gross_amount'      => (int) $transaction->total_price+ $transaction->ongkir, 
                 ],
                 'customer_details' =>[
                     'first_name'    => $transaction->name,
