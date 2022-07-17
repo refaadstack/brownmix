@@ -17,7 +17,6 @@ class Product extends Model
         'category_id',
         'stocks',
         'slug',
-        'weight'
     ];
 
     public function galleries(){

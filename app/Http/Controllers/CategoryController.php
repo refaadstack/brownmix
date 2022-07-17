@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use DataTables;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,34 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        
+        if(request()->ajax()){
+            $query = Category::query();
+
+            return DataTables::of($query)
+            ->addIndexColumn()
+            ->addColumn('action', function($item){
+                return '
+                    <a href="'. route('dashboard.category.edit', $item->id) .'" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 mr-2 md:my-4 rounded shadow-lg">
+                        Edit
+                    </a>
+
+
+                    <form class="inline-block" action="'. route('dashboard.category.destroy',$item->id) .'" method="POST">
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 mr-2 md:my-4 rounded shadow-lg"> Hapus
+                    </button>
+                    '. method_field('delete'). csrf_field() .'
+                    </form>
+                    
+                ';
+            })
+            ->editColumn('price', function($item){
+                return number_format($item->price);
+            })
+            ->rawColumns(['action'])
+            ->make();
+        }
+        return view('pages.dashboard.category.index');
     }
 
     /**
@@ -24,7 +52,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.dashboard.category.create');
     }
 
     /**
@@ -35,7 +63,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $category = Category::create($request->all());
+
+        return redirect()->route('dashboard.category.index')->with('success', 'Kategori berhasil ditambahkan');
     }
 
     /**
@@ -57,7 +91,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('pages.dashboard.category.edit', compact('category'));
     }
 
     /**
@@ -69,7 +103,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $category->update($request->all());
+
+        return redirect()->route('dashboard.category.index')->with('success', 'Kategori berhasil diubah');
     }
 
     /**
@@ -80,6 +120,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('dashboard.category.index')->with('success', 'Kategori berhasil dihapus');
     }
 }
