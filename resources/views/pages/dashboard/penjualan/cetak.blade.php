@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laporan Penjualan Daisee Crafting</title>
+        <title>Laporan Penjualan BrownMix Factory</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     </head>
     <body>
         <h3 class="text-center">
-            Laporan Penjualan Daisee Crafting
+            Laporan Penjualan BrownMix Factory
         </h3>
-        <p class="text-dark">Produk {{ $cat }}</p>
         <table class="table table-bordered table-sm">
             <thead>
                 <tr>
                     <th>Nama (produk)</th>
-                    <th style="width: 10%">Email</th>
                     <th>Kategori</th>
                     <th>Alamat</th>
                     <th>Ongkir</th>
-                    <th>Total Price</th>
+                    <th>Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +30,6 @@
                         <h6 class="card-title">{{ $transaction->namapenerima }}</h6>
                         <small class="card-text">{{ $transaction->namaproduk }}</small>
                     </td>
-                    <td class="text-dark">{{ $transaction->email }}</td>
                     <td class="text-dark">{{ $transaction->catName }}</td>
                     <td class="text-dark">{{ $transaction->address}}</td>
 
@@ -50,19 +47,19 @@
                 ?>
                 @endforeach
                 <tr>
-                    <td colspan="5">
+                    <td colspan="4">
                         Total Ongkir
                     </td>
                     <td>Rp.{{ $formatOngkir }}</td>
                 </tr>
                 <tr>
-                    <td colspan="5">
+                    <td colspan="4">
                         Total Pemasukan
                     </td>
                     <td>Rp.{{ $formatPemasukan }}</td>
                 </tr>
                 <tr>
-                    <td colspan="5">
+                    <td colspan="4">
                         Jumlah
                     </td>
                     <td>Rp.{{ $jumlah }}</td>
@@ -95,7 +92,7 @@
             return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
         }
     ?>
-        <p align="left" style="margin-left: 470px" id="tanggal" class="mb-5">Merangin, {{tgl_indo(date('Y-m-d')) }}</p>
-        <p align="left" class="mt-2" style="margin-left: 470px">Fakhira </p>
+        <p align="left" style="margin-left: 470px" id="tanggal" class="mb-5">Jambi, {{tgl_indo(date('Y-m-d')) }}</p>
+        <p align="left" class="mt-2" style="margin-left: 470px">PEMILIK </p>
     </body>
 </html>
