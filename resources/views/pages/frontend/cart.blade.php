@@ -8,7 +8,7 @@
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="#" aria-label="current-page">Shopping Cart</a>
+              <a href="#" aria-label="current-page">Keranjang Belanja</a>
             </li>
           </ul>
         </div>
@@ -23,7 +23,7 @@
               <div
                 class="flex flex-start mb-4 mt-8 pb-3 border-b border-gray-200 md:border-b-0"
               >
-                <h3 class="text-2xl">Shopping Cart</h3>
+                <h3 class="text-2xl">Keranjang Anda</h3>
               </div>
   
               <div class="border-b border-gray-200 mb-4 hidden md:block">
@@ -35,17 +35,17 @@
                   </div>
                   <div class="px-4 w-5/12">
                     <div class="">
-                      <h6>Product</h6>
+                      <h6>Kue</h6>
                     </div>
                   </div>
                   <div class="px-4 w-5/12">
                     <div class="">
-                      <h6>Price</h6>
+                      <h6>Harga</h6>
                     </div>
                   </div>
                   <div class="px-4 w-5/12">
                     <div class="">
-                      <h6>Quantity</h6>
+                      <h6>Jumlah</h6>
                     </div>
                   </div>
                   <div class="px-4 w-2/12">
@@ -116,18 +116,11 @@
                       </div>
                     </div>
                 </div>
-
-                <?php
-                    
-                    $totalBerat = $totalBerat + $cart->product->weight * $cart->quantity;
-                    $result = $totalBerat;
-                    
-                ?>
             <!-- END: ROW 1 -->
               @empty    
                 <p id="cart-empty" class="text-center py-8">
-                  Ooops... Cart is empty
-                  <a href="{{ route('index') }}" class="underline">Shop Now</a>
+                  Ooops... Keranjang kosong
+                  <a href="{{ route('index') }}" class="underline">Ayo Belanja</a>
                 </p>  
               @endforelse
 
@@ -139,7 +132,7 @@
                 <form action="{{ route('checkout') }}" method="POST">
                   @csrf
                     <div class="flex flex-start mb-6">
-                      <h3 class="text-2xl">Shipping Details</h3>
+                      <h3 class="text-2xl">Form Pemesanan</h3>
                     </div>
     
                     <div class="flex flex-col mb-4">
