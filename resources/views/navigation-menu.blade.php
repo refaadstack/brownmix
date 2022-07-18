@@ -16,6 +16,12 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
 
+                    @if (Auth::user()->roles == 'OWNER')
+                        <x-jet-nav-link href="{{ route('dashboard.user.index') }}" :active="request()->routeIs('dashboard.user.index')">
+                            {{ __('Admin') }}
+                        </x-jet-nav-link>  
+                    @endif
+
                     @if (Auth::user()->roles =='ADMIN')
                     <x-jet-nav-link href="{{ route('dashboard.product.index') }}" :active="request()->routeIs('dashboard.product.index')">
                         {{ __('Kue') }}

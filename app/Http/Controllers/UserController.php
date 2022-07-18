@@ -6,6 +6,8 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -17,30 +19,35 @@ class UserController extends Controller
     public function index()
     {
         if(request()->ajax()){
-            $query = User::where('roles','USER');
 
+            if(Auth::user()->role == 'ADMIN'){
+                $query = User::where('roles','USER');
+            }else{
+                $query = User::where('roles','ADMIN');
+            }
             return DataTables::of($query)
-            ->addIndexColumn()
-            ->addColumn('action', function($item){
-                return '
-                    <a href="'. route('dashboard.user.edit', $item->id) .'" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 mr-2 md:my-4 rounded shadow-lg">
-                        Edit
-                    </a>
-                    <a href="'. route('dashboard.user.show', $item->id) .'" class="bg-green-400 hover:bg-green-500 text-white font-bold py-1 px-3 mr-2 md:my-4 rounded shadow-lg">
-                        Detail
-                    </a>
+                ->addIndexColumn()
+                ->addColumn('action', function($item){
+                    return '
+                        <a href="'. route('dashboard.user.edit', $item->id) .'" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 mr-2 md:my-4 rounded shadow-lg">
+                            Edit
+                        </a>
+                        <a href="'. route('dashboard.user.show', $item->id) .'" class="bg-green-400 hover:bg-green-500 text-white font-bold py-1 px-3 mr-2 md:my-4 rounded shadow-lg">
+                            Detail
+                        </a>
 
 
-                    <form class="inline-block" action="'. route('dashboard.user.destroy',$item->id) .'" method="POST">
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 mr-2 md:my-4 rounded shadow-lg"> Hapus
-                    </button>
-                    '. method_field('delete'). csrf_field() .'
-                    </form>
-                    
-                ';
-            })
-            ->rawColumns(['action'])
-            ->make();
+                        <form class="inline-block" action="'. route('dashboard.user.destroy',$item->id) .'" method="POST">
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 mr-2 md:my-4 rounded shadow-lg"> Hapus
+                        </button>
+                        '. method_field('delete'). csrf_field() .'
+                        </form>
+                        
+                    ';
+                })
+                ->rawColumns(['action'])
+                ->make();
+            
         }
         return view('pages.dashboard.user.index');
     }

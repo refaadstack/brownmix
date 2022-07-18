@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Transaction &raquo; {{ $item->name}} &raquo; Edit
+            Transaksi &raquo; {{ $item->name}} &raquo; Edit
         </h2>
     </x-slot>
     <div class="py-12">
@@ -12,14 +12,16 @@
                         <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
                             Ada yang salah!
                         </div>
-                        <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700"></div>
-                        <p>
-                            <ul>
-                                @foreach ($errors->all() as $error)
+                        <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                            
+                            <p>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </p>
+                                    @endforeach
+                                </ul>
+                            </p>
+                        </div>
                     </div>
                 @endif
                 <form action="{{ route('dashboard.transaction.update',$item->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
