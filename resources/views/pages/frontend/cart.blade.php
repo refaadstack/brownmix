@@ -186,11 +186,20 @@
                       />
                     </div>
                     <div class="flex flex-col mb-4">
-                      <label for="ongkir" class="text-sm mb-2">Jenis Paket</label>
+                      <label for="ongkir" class="text-sm mb-2">Kecamatan</label>
                         <select class="border-gray-200 border rounded-lg px-2 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none" name="ongkir" id="ongkir">
-                          <option value="">-- pilih Paket --</option>
-                          <option value="10000">diantar</option>
-                          <option value="0">jemput sendiri</option>
+                          <option value="">-- pilih kecamatan --</option>
+                          <option value="21000">Jambi Selatan</option>
+                          <option value="14000">Telanai Pura</option>
+                          <option value="35000">Pelayangan</option>
+                          <option value="20000">Pasar Jambi</option>
+                          <option value="27000">Paal Merah</option>
+                          <option value="12000">Kota Baru</option>
+                          <option value="21000">Jelutung</option>
+                          <option value="30000">Jambi Timur</option>
+                          <option value="34000">Danau Teluk</option>
+                          <option value="20000">Danau Sipin</option>
+                          <option value="8000">Alam Barajo</option>
                         </select>
                     </div>
                     <div class="flex flex-col mb-4">

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Product &raquo; Create
+            Product &raquo; Tambah
         </h2>
     </x-slot>
     <div class="py-12">
@@ -29,25 +29,25 @@
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">Nama</label>
-                            <input type="text" value="{{ old('name') }}" name="name" placeholder="Nama Produk" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
+                            <input type="text" value="{{ old('name') }}" name="nama" placeholder="Nama Produk" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="description">Deskripsi produk</label>
-                            <textarea name="description" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">{!! old('description') !!} </textarea>
+                            <textarea name="deskripsi" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">{!! old('description') !!} </textarea>
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">price</label>
-                            <input type="number" value="{{ old('price') }}" name="price" placeholder="Harga" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">harga</label>
+                            <input type="number" value="{{ old('price') }}" name="harga" placeholder="Harga" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">category</label>
-                            <select name="category_id" id="" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">Kategori</label>
+                            <select name="kategori" id="" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
                                 <option selected disabled>Pilih Kategory</option>
                                 @foreach ($categories as $category)
                                  <option value="{{ $category->id }}">{{ $category->name }}</option>   
@@ -57,8 +57,8 @@
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="stocks">stocks</label>
-                            <input type="number" value="{{ old('stocks') }}" name="stocks" placeholder="Stocks" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="stocks">stok</label>
+                            <input type="number" value="{{ old('stocks') }}" name="stok" placeholder="Stok" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
                         </div>
                     </div>
                     

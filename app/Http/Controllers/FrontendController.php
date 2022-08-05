@@ -93,15 +93,7 @@ class FrontendController extends Controller
             $carts = Cart::with(['product'])->where('users_id', Auth::user()->id)->get();
         //add to transaction data
             $data['users_id'] = Auth::user()->id;
-            $data['price'] = 0;
-            $data['total_price'] = 0;
-            foreach ($carts as $cart) {
-                $data['price'] += $cart->product->price * $cart->quantity;
-                $data['total_price'] = $data['total_price'] + $data['price'];
-            }
-
-
-
+            $data['total_price'] = $carts->sum('product.price');
             
         //create transaction
             $transaction = Transaction::create($data);  

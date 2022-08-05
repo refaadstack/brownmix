@@ -30,25 +30,25 @@
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">Nama</label>
-                            <input type="text" value="{{old('name') ?? $product->name}}" name="name" placeholder="Nama Produk" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
+                            <input type="text" value="{{old('nama') ?? $product->name}}" name="nama" placeholder="Nama Produk" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="description">Deskripsi produk</label>
-                            <textarea name="description" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">{!! old('description') ??$product->description !!} </textarea>
+                            <textarea name="deskripsi" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">{!! old('deskripsi') ??$product->description !!} </textarea>
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">price</label>
-                            <input type="number" value="{{ old('price') ?? $product->price }}" name="price" placeholder="Harga" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">Harga</label>
+                            <input type="number" value="{{ old('harga') ?? $product->price }}" name="harga" placeholder="Harga" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">category</label>
-                            <select name="category_id" id="" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">  
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">Kategori</label>
+                            <select name="kategori" id="" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">  
                                 @foreach ($categories as $category)
                                  <option selected value="{{ $category->id }}">{{ $category->name }}</option>   
                                 @endforeach
@@ -57,14 +57,8 @@
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="weight">weight</label>
-                            <input type="number" value="{{ old('weight') ?? $product->weight }}" name="weight" placeholder="Weight" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">stocks</label>
-                            <input type="number" value="{{ old('stocks') ?? $product->stocks }}" name="stocks" placeholder="Stocks" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="price">stok</label>
+                            <input type="number" value="{{ old('stok') ?? $product->stocks }}" name="stok" placeholder="Stok" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" autocomplete="off">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">

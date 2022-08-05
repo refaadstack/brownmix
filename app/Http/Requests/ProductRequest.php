@@ -25,9 +25,11 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'description' => 'required',
-            'price' => 'required|integer',
+            'nama' => 'required|max:255',
+            'deskripsi' => 'required',
+            'harga' => 'required|integer',
+            'kategori' => 'required',
+            'stok' => 'required|integer',
         ];
     }
 }

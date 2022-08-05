@@ -69,10 +69,16 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
+        $product = New Product;
+        $product->name = $request->nama;
+        $product->slug = Str::slug($request->nama);
+        $product->description = $request->deskripsi;
+        $product->price = $request->harga;
+        $product->category_id = $request->kategori;
+        $product->stocks = $request->stok;
+        $product->save();
 
-        Product::create($data);
+
         return redirect()->route('dashboard.product.index');
     }
 
@@ -108,10 +114,13 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
-
-        $product->update($data);
+        $product->name = $request->nama;
+        $product->slug = Str::slug($request->nama);
+        $product->description = $request->deskripsi;
+        $product->price = $request->harga;
+        $product->category_id = $request->kategori;
+        $product->stocks = $request->stok;
+        $product->update();
         return redirect()->route('dashboard.product.index');
     }
 

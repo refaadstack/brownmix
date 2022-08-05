@@ -20,6 +20,9 @@
                         <x-jet-nav-link href="{{ route('dashboard.user.index') }}" :active="request()->routeIs('dashboard.user.index')">
                             {{ __('Admin') }}
                         </x-jet-nav-link>  
+                        <x-jet-nav-link href="{{ route('dashboard.transaction.index') }}" :active="request()->routeIs('dashboard.transaction.index')">
+                            {{ __('Transaksi') }}
+                        </x-jet-nav-link> 
                     @endif
 
                     @if (Auth::user()->roles =='ADMIN')
