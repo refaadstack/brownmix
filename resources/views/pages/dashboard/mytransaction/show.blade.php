@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Transaction &raquo; #{{ $transaction->id }} &raquo; {{ $transaction->name }} 
+            Transaksi &raquo; #{{ $transaction->id }} &raquo; {{ $transaction->name }} 
         </h2>
     </x-slot>
     <x-slot name="script">

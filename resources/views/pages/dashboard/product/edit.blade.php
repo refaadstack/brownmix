@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Product &raquo; {{ $product->name}} &raquo; Edit
+            Kue &raquo; {{ $product->name}} &raquo; Edit
         </h2>
     </x-slot>
     <div class="py-12">

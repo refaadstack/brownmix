@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Transaction &raquo; #{{ $transaction->id }} &raquo; {{ $transaction->name }} 
+            Transaksi &raquo; #{{ $transaction->id }} &raquo; {{ $transaction->name }} 
         </h2>
     </x-slot>
     <x-slot name="script">
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <h2 class="font-semibold text-lg text-gray-800 leading-tight mb-5">
-                Transaction Item
+                Transaksi Item
             </h2>
             <div class="shadow overflow-hidden sm-rounded-md">
                 <div class="py-4 px-5 bg-white sm:p-6">
